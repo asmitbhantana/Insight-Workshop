@@ -1,0 +1,280 @@
+body{
+    margin:0;
+}
+
+.mainBody{
+    font-family: "Helvetica Neue";
+    color: purple;
+    display: flex;
+    flex-direction: column;
+}
+section{
+    background: linear-gradient(to right,  #ffffff , 30%,#f8e5f3);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.mainContainer{
+    /* height: 70vh; */
+    display: flex;
+    /* grid-template-columns:repeat(auto-fit,minmax(375px,1fr)); */
+    flex-direction: column;
+    flex-grow: 1;
+    padding-left:1%;
+    padding-right:1%;
+}
+.mainContainer .projectContainer{
+    
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  
+}
+
+.personalInfoContainer{
+    display: flex;
+    flex-direction:column;
+}
+.personalInfoContainer a#prewordsBio{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-left: 25px;
+    color: purple;
+}
+.personalInfoContainer a#fullUsername{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+    margin-left: 25px;
+}
+.personalInfoContainer a#userBio{
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 3px;
+    font-size: 14px;
+    margin-left:40px;
+    color: grey;
+}
+.personalInfoContainer a#growthWords{
+    font-size: 20px;
+    margin-left: 30px;
+    margin-top:40px;
+}
+.personalProgessContainer {
+    display: grid;
+    margin-top: 5%;
+    grid-template-columns: repeat(3,minmax(65px,1fr));
+    grid-template-rows: repeat(3,minmax(65px,1fr));
+    grid-template-areas:
+                    "followers.following"
+                        " .gitIcon. "
+                    "publicRepos.publicGist";
+    padding-left:3%;
+    padding-right: 3%;
+    width: max-content;
+}
+.card_view{
+    background-color:#E7D6F7;
+    color: purple;
+    display:flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding:10px;
+    margin: 0;
+    box-shadow: 10px;
+    align-items: center;
+}
+.personalProgessParentContainer{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 3%;
+}
+.personalProgessContainer .card_view img{
+    flex-grow: 1;
+    width: fit-content;
+}
+.personalProgessContainer .card_view     a{
+    color:purple;
+    font-size:auto;
+    text-decoration:none;
+    font-family:"Times New Roman",serif;
+}
+.personalProgessContainer #followersItem{
+    grid-area: followers;
+}
+.personalProgessContainer #followingItem{
+    grid-area: following;
+}
+.personalProgessContainer #gitIcon{
+    grid-area: gitIcon;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+.personalProgessContainer #gitIcon img{
+}
+.personalProgessContainer #publicRepos{
+    grid-area: publicRepos;
+}
+.personalProgessContainer #publicGist{
+    grid-area: publicGist;
+}
+.myInfoContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.myInfoContainer .myTweetsContainer .timeline-Widget{
+    margin-top: 30px;
+    overflow: scroll;
+    flex-grow: 1;
+    
+}
+
+/* rep css */
+.myRepoContainer {
+    padding:3%;
+    color:purple;
+    display: flex;
+    flex-direction: column;
+    width: margin;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+.myRepoContainer a{
+    font-size: 25px;
+}
+.myRepoContainer .repoCardList{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    background-color:#9C82B8;
+}
+.repo_card_item {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: repeat(5,10px);
+    align-items: flex-start;
+    align-self: center;
+    margin-top: 5px;
+}
+.repo_card_item #repoName{
+    grid-row: 1/2;
+    grid-column: 2/7;
+    font-size: 16px;
+    margin-left:5px;
+    text-decoration: none;
+
+}
+.repo_card_item #repoDescription{
+    grid-row: 3/5;
+    grid-column: 2/7;
+    font-size: 10px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+.repo_card_item #languageLogoImg{
+    grid-row: 4/5;
+    grid-column: 9/10;
+    width: 25px;
+}
+.repo_card_item #repoDate{
+    grid-row: 1/2;
+    grid-column: 9/10;
+    font-size: 9px;
+    padding-bottom: 5px;
+}
+.repo_card_item #repoTypeImg{
+    grid-row: 1/2;
+    grid-column: 1/2;
+    width:40px;
+    mix-blend-mode: darken;
+    border: 1px solid #FFDBDB;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(#bc61e0,#bc61e0 , #bc61e0, white);
+    
+}
+.myRepoContainer .repoNavigationBar{
+    margin: 5px;
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+
+}
+.myRepoContainer .repoNavigationBar .repoNavigationButton{
+    color: purple;
+    background-color: #E7D6F7;
+    padding: 7px;
+    border:0;
+    margin: 2px;
+
+}
+
+
+
+
+/* nav container */
+.navContainer{
+    display: flex;
+    flex-direction:row;
+    color:purple;
+}
+.navContainer img{
+    height: 50px;
+    align-self: flex-start;
+    border-radius: 3px;
+}
+.navContainer .navBtnContainer{
+    align-self: center;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+.navContainer img{
+    align-self: center;
+    margin:10px;
+    padding:5px;
+}
+.navContainer *{
+    text-decoration:none;
+    margin: 10px;
+    padding:5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.navContainer a#hireMeBtn{
+    color:purple;
+    background-color: #E7D6F7;
+    border-radius: 3px;
+}
+.footerContainer{
+    padding:1px;
+    font-size: 13px;
+    color:purple;
+    background-color:#E7D6F7;
+    display:flex;
+    justify-content: center;
+}
+
+.footerContainer a{
+    text-decoration: none;
+}
+
+#goUpButton{
+  position: fixed; 
+  bottom: 20px; 
+  right: 20px; 
+  z-index: 99; 
+  border: none; 
+  outline: none; 
+  background-color: white; 
+  color: purple; 
+  cursor: pointer;
+  padding: 5px; 
+  border-radius: 10px; 
+  font-size: 18px;
+  box-shadow: 0px 4px 4px rgba(#bc61e0,#bc61e0 , #bc61e0, white);
+
+}
+#goUpButton:hover {
+    background-color: purple; 
+    color: white;
+  }
