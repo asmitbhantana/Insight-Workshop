@@ -1,0 +1,18 @@
+{
+    "accounts": {
+        "accounts": {
+            "Asmit": {
+                "balance": 4000,
+                "from": {}
+            },
+            "Sita": {
+                "balance": 4000,
+                "from": {}
+            }
+        },
+        "Hari ": {
+            "balance": 4000,
+            "from": {}
+        }
+    }
+}

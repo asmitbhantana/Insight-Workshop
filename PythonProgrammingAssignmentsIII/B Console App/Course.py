@@ -1,13 +1,23 @@
 class Course:
 
-    def __init__(self, name, duration, detail, price):
+    def __init__(self, name, duration, detail, price, __enrolled_student=None, __student_info_for_course=None,
+                 __study_material=None):
         self.name = name
         self.duration = duration
         self.detail = detail
         self.price = price
-        self.__enrolled_student = []
-        self.__student_info_for_course = {}
-        self.__study_material = []
+        if __enrolled_student is None:
+            self.__enrolled_student = []
+        else:
+            self.__enrolled_student = __enrolled_student
+        if __student_info_for_course is None:
+            self.__student_info_for_course = {}
+        else:
+            self.__student_info_for_course = __student_info_for_course
+        if __study_material is None:
+            self.__study_material = []
+        else:
+            self.__study_material = __study_material
 
     def add_student(self, student):
         if self.__enrolled_student.__contains__(student):
@@ -78,7 +88,7 @@ class Course:
                 try:
                     progress = self.__student_info_for_course[student.get_name()]["progress"]
                     if progress == self.duration:
-                        #return money for complete return_money()
+                        # return money for complete return_money()
                         material = self.__study_material[progress - 1]
                         self.remove_student_from_course(student)
                         return {'material': material, 'completed': True}

@@ -4,24 +4,54 @@ from Course import *
 from Finance import *
 from FileHandling import *
 
+
 class Academy:
     ACADEMY_NAME = "I.W. ACADEMY"
 
     def __init__(self):
-        self.student_list = []
-        self.course_list = []
+        self.student_list = self.decode_student_from_json()
+        self.course_list = self.decode_course_list_from_json()
         self.account = None
-        self.finance_manager = Finance()
-        self.create_academy_account()
+        self.finance_manager = self.decode_finance_info_from_json()
+
+    def decode_finance_info_from_json(self):
+        finance_info = FileHandling.retrieve_finance_info()
+        if finance_info is None:
+            self.create_academy_account()
+
+        return Finance(finance_info)
+
+
+    def decode_student_from_json(self):
+        student_list = FileHandling.retrieve_student_info()
+        students = []
+        for s in student_list:
+            student = self.create_student_from_json(s['name'], s['age'], s['college_name'], s['faculty'])
+            students.append(student)
+        return students
+
+    def decode_course_list_from_json(self):
+        course_list = FileHandling.retrieve_course_info()
+        courses = []
+        for course in course_list:
+            new_course = Course(course['name'], course['duration'], course['detail'], course['price'],
+                                course['_Course__enrolled_student'], course['_Course__student_info_for_course'],
+                                course['_Course__study_material']
+                                )
+            courses.append(new_course)
+        return courses
 
     def create_academy_account(self):
         self.account = self.finance_manager.create_account(Academy.ACADEMY_NAME)
 
     def register_student(self):
         new_student = Student()
-        account = self.finance_manager.create_account(new_student.get_name(), True)
-        new_student.set_account(account)
+        new_student.set_student_props()
+        self.finance_manager.create_account(new_student.get_name(), True)
         self.student_list.append(new_student)
+
+    def create_student_from_json(self, name, age, college_name, faculty):
+        return Student(name, age, college_name, faculty)
 
     def register_new_course(self):
         name = input("Course Name?")
@@ -153,7 +183,7 @@ class Academy:
                         print("You have paid sufficient for course!")
                         material_returnee = course.get_study_material_for_day(current_student)
                         material = material_returnee['material']
-                        print("This is the material\n", material)
+                        print("###########\nThis is the material\n-----------\n", material, end="##########")
                         if material_returnee["completed"]:
                             print("Congratulations Course is completed!!!")
                             print("Returning the money!")
@@ -164,7 +194,6 @@ class Academy:
                         print(f"Sorry you have not paid full. {paid_amount} is only paid.")
                 # TODO
                 # save details in .json file
-                # check for payment on accessing for course material
 
     def get_student_payment_options(self):
         amount = int(input("What amount you want to pay "))
@@ -188,6 +217,8 @@ class Academy:
         self.finance_manager.transfer_money(amount, current_student.get_name(), Academy.ACADEMY_NAME)
 
 
+
+
 if __name__ == '__main__':
     academy = Academy()
     while True:
@@ -200,5 +231,7 @@ if __name__ == '__main__':
         elif usr_selection == 1:
             academy.student_options()
         elif usr_selection == 3:
-            FileHandling.save_student_info(academy.courseinfo)
-            FileHandeling.save_course_info(academy.course_list)
+            FileHandling.save_student_info(academy.student_list)
+            FileHandling.save_course_info(academy.course_list)
+            FileHandling.save_finance_info(academy.finance_manager.__dict__)
+            break

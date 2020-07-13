@@ -1,0 +1,45 @@
+[
+    {
+        "name": "Django Web Development",
+        "duration": 7,
+        "detail": "It is a course targated to the mass audience who loves python and is familiar with basics of python. This course is intended to anyone who is looking to become a professional Full Stack Web Developers.",
+        "price": 2000,
+        "_Course__enrolled_student": [
+            {
+                "name": "Asmit",
+                "age": "22",
+                "college_name": "KEC",
+                "faculty": "BCT"
+            }
+        ],
+        "_Course__student_info_for_course": {
+            "Asmit": {
+                "fee": 2000,
+                "progress": 2
+            }
+        },
+        "_Course__study_material": [
+            "Learn Basics Python",
+            "Learn HTML,CSS,JS",
+            "Learn Basic Web Techonology",
+            "Learn Basic Django",
+            "Learn Jinja Frontend techonolgy emplate",
+            "Learn Advance Django",
+            "Learn Advance Python"
+        ]
+    },
+    {
+        "name": "Ruby On Rails Web Development",
+        "duration": 4,
+        "detail": "This web development is intended for the web developer familier with Ruby Language. Looking forward to unleash the web development with ruby.",
+        "price": 2000,
+        "_Course__enrolled_student": [],
+        "_Course__student_info_for_course": {},
+        "_Course__study_material": [
+            "Learn Basics Ruby",
+            "Learn Basics of Web Technology",
+            "Learn Ruby On Rails",
+            "Learn Advance ROR"
+        ]
+    }
+]

@@ -1,7 +1,10 @@
 class Finance:
 
-    def __init__(self):
-        self.accounts = {}
+    def __init__(self, accounts=None):
+        if accounts is None:
+            self.accounts = {}
+        else:
+            self.accounts = accounts
 
     def create_account(self, name, isStudent=False):
         try:
@@ -15,7 +18,7 @@ class Finance:
                 self.accounts[name]['balance'] = 4000
             self.accounts[name]["from"] = {}
             print("Created account with name", name)
-            return self
+            return True
 
     def delete_account(self, name):
         try:
@@ -30,7 +33,7 @@ class Finance:
             return e
 
     def transfer_money(self, balance, t_from, t_to):
-        print("Transferring money!", self.accounts)
+        print("Transferring money!")
         try:
             if self.accounts[t_from]['balance'] >= balance:
                 self.accounts[t_from]['balance'] -= balance
@@ -49,7 +52,6 @@ class Finance:
             print("Not sufficient balance!")
             return False
         except Exception as e:
-            print("Error have occurred!", e)
             return False
 
     def get_transferred_amount(self, t_from, t_to):

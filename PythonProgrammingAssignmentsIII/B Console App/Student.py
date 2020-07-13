@@ -1,24 +1,16 @@
 class Student:
 
-    def __init__(self, name=None, age=None, college_name=None, faculty=None, bank_account=None):
+    def __init__(self, name=None, age=None, college_name=None, faculty=None,):
         self.name = name
         self.age = age
         self.college_name = college_name
         self.faculty = faculty
-        self.account = bank_account
-        self.set_student_props()
 
     def set_student_props(self):
         self.set_name()
         self.set_age()
         self.set_college_name()
         self.set_faculty()
-
-    def get_account(self):
-        return self.account
-
-    def set_account(self, account):
-        self.account = account
 
     def get_name(self):
         return self.name

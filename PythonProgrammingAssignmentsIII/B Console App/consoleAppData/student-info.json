@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Asmit",
+        "age": "22",
+        "college_name": "KEC",
+        "faculty": "BCT"
+    },
+    {
+        "name": "Sita",
+        "age": "22",
+        "college_name": "KEC",
+        "faculty": "Computer"
+    },
+    {
+        "name": "Hari ",
+        "age": "20",
+        "college_name": "AEC",
+        "faculty": "Electronics"
+    }
+]
