@@ -12,7 +12,7 @@ class Finance:
             self.accounts[name] = {}
             self.accounts[name]['balance'] = 0
             if isStudent:
-                self.accounts[name]['balance'] = 2000
+                self.accounts[name]['balance'] = 4000
             self.accounts[name]["from"] = {}
             print("Created account with name", name)
             return self
@@ -29,12 +29,12 @@ class Finance:
         except Exception as e:
             return e
 
-
     def transfer_money(self, balance, t_from, t_to):
+        print("Transferring money!", self.accounts)
         try:
-            if self.accounts[t_from][balance] >= balance:
-                self.accounts[t_from][balance] -= balance
-                self.accounts[t_to][balance] += balance
+            if self.accounts[t_from]['balance'] >= balance:
+                self.accounts[t_from]['balance'] -= balance
+                self.accounts[t_to]['balance'] += balance
                 try:
                     # sender exists
                     self.accounts[t_to]["from"][t_from]
@@ -44,17 +44,19 @@ class Finance:
                     self.accounts[t_to]["from"][t_from] = {}
                     self.accounts[t_to]["from"][t_from] = balance
                 print(f"{balance} Transfer Success from {t_from} to {t_to}")
+                print("for debug account", self.accounts)
                 return True
             print("Not sufficient balance!")
             return False
         except Exception as e:
-            return e
+            print("Error have occurred!", e)
+            return False
 
     def get_transferred_amount(self, t_from, t_to):
         balance = 0
         try:
             balance = self.accounts[t_to]["from"][t_from]
             print("Found some transactions")
-        except Exception:
-            print("Cannot find any related transactions")
+        except Exception as e:
+            print("Cannot find any related transactions", e)
         return balance
