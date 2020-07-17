@@ -21,7 +21,6 @@ class Academy:
 
         return Finance(finance_info)
 
-
     def decode_student_from_json(self):
         student_list = FileHandling.retrieve_student_info()
         students = []
@@ -82,8 +81,11 @@ class Academy:
         student = self.student_list[choose0]
         return student
 
-    def choose_course(self):
-        self.list_course()
+    def choose_course(self, student=None):
+        if student is not None:
+            self.list_course(student=student)
+        else:
+            self.list_course()
         choose = int(input("Type in the index of the needed course."))
         course = self.course_list[choose]
         return course
@@ -96,12 +98,17 @@ class Academy:
             print(f"{index}.{student}")
         print("###########\n")
 
-    def list_course(self):
+    def list_course(self, student=None):
         print("########\n"
               "Available list of Courses\n"
               "---------------")
-        for index, course in enumerate(self.course_list, 0):
-            print(f"{index}.{course}")
+        if student is None:
+            for index, course in enumerate(self.course_list, 0):
+                print(f"{index}.{course}")
+        else:
+            for index, course in enumerate(self.course_list, 0):
+                if course.is_student_enrolled(student):
+                    print(f"{index}.{course}")
         print("###########\n")
 
     def admin_options(self):
@@ -143,13 +150,15 @@ class Academy:
         while True:
             student_choose = int(input(
                 "What you want to do?\n"
+                "0.Exit\n"
                 "1.Edit college name\n"
                 "2.Edit Faculty\n"
                 "3.Edit age\n"
                 "4.Enroll in Course\n"
                 "5.Pay For enrolled Course\n"
-                "6.Take classes for enrolled courses\n"
-                "0.Exit\n"
+                "6.Take classes for enrolled Courses\n"
+                "7.View Enrolled Courses\n"
+                "8.View Your Details\n"
             ))
 
             if student_choose == 0:
@@ -165,7 +174,7 @@ class Academy:
                 self.student_register_in_course(course, current_student)
             elif student_choose == 5:
                 try:  # check if he has paid or not
-                    course = self.choose_course()
+                    course = self.choose_course(current_student)
                     if course.is_student_enrolled(current_student):
                         amount = self.get_student_payment_options()
                         self.pay_for_course(course, current_student, amount)
@@ -175,15 +184,15 @@ class Academy:
                 except Exception as e:
                     print(e)
             elif student_choose == 6:
-                course = self.choose_course()
+                course = self.choose_course(current_student)
                 if course.is_student_enrolled(current_student):
-                    print("Student is enrolled...\n")
+                    print("Student is enrolled.")
                     paid_amount = course.has_student_paid(current_student)
                     if paid_amount >= 2000:
                         print("You have paid sufficient for course!")
                         material_returnee = course.get_study_material_for_day(current_student)
                         material = material_returnee['material']
-                        print("###########\nThis is the material\n-----------\n", material, end="##########")
+                        print("###########\nThis is the material\n-----------\n", material, end="\n##########")
                         if material_returnee["completed"]:
                             print("Congratulations Course is completed!!!")
                             print("Returning the money!")
@@ -192,6 +201,10 @@ class Academy:
                         # day he have got to the content!
                     else:
                         print(f"Sorry you have not paid full. {paid_amount} is only paid.")
+            elif student_choose == 7:
+                self.list_course(current_student)
+            elif student_choose == 8:
+                print(current_student.get_detail(), "\n")
                 # TODO
                 # save details in .json file
 
@@ -215,8 +228,6 @@ class Academy:
 
     def pay(self, amount, current_student):
         self.finance_manager.transfer_money(amount, current_student.get_name(), Academy.ACADEMY_NAME)
-
-
 
 
 if __name__ == '__main__':

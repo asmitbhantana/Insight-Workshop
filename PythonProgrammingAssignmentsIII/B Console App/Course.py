@@ -32,8 +32,9 @@ class Course:
         return self.__enrolled_student
 
     def is_student_enrolled(self, student):
-        if self.__enrolled_student.__contains__(student):
-            return True
+        for s in self.__enrolled_student:
+            if s['name'] == student.get_name():
+                return True
         return False
 
     def add_material_to_course(self, material):
