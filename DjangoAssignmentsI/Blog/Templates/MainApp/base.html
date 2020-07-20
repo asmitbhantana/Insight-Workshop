@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+
+
+
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static '/static/landing/landing.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/static/detail/detail.css' %}" type="text/css">
+    <title>Landing Page</title>
+    {% block extrahead %}
+        <script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
+    {{ block.super }}
+{% endblock %}
+</head>
+<body>
+<div class="top-banner-container">
+    <nav>
+        <div class="nav-header">
+            <a href="{% url 'blog:index' %}"><b>Dev Blogs</b></a>
+        </div>
+        <div class="nav-menu-container">
+            <ul>
+                <li><a href="{% url 'blog:index' %}">Home</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'dashboard:index' %}"><u>Your Dashboard</u></a></li>
+                {% else %}
+                    <li><a href="{% url 'account:login' %}"><u>Log In</u></a></li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </nav>
+</div>
+{% block block_body %}
+    {% endblock %}
+</body>
+</html>
+

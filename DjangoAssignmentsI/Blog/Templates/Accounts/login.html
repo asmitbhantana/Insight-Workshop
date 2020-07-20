@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+<!--    <link rel="stylesheet" href="static/login/login.css" >-->
+    <link rel="stylesheet" href="{% static 'static/login/login.css' %}" >
+    <link rel="js" href="{% static 'static/login/login.js' %}">
+    <title>Login Page</title>
+  </head>
+  <body>
+
+  <div class="form-container">
+      <h2>Login & Write</h2>
+        <form class="login-form" method="post">
+          {% csrf_token %}
+          <div class="input-container">
+            <div class="form-item" id="email-field">
+<!--              <input type="email" name="email" placeholder="Email">-->
+              <p>Username</p>{{ form.username }}
+            </div>
+            <div class="form-item" id="password-field">
+<!--              <input type="password" name="password" placeholder="Password">-->
+                <p>Password</p>{{ form.password }}
+            </div>
+            <div class="form-item" >
+              <input id="submit-button" type="submit" name="submit-button" value="Login">
+            </div>
+          </div>
+        </form>
+      <p>Not a member: <a href="{% url 'account:register' %}"class="sign-up-link">SignUp</a></p>
+  </div>
+  </body>
+</html>

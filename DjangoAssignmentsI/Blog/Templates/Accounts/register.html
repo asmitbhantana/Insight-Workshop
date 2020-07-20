@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'static/register/register.css' %}">
+    <link rel="js" href="{% static 'static/register/register.js' %}">
+    <title>SignUp Page</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Become <u>Writer!</u></h2>
+        <form class="login-form" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="input-container">
+            <div class="general-name">
+                <div class="form-item" id="firstname-field">
+<!--                  <input type="text" name="firstname" placeholder="Firstname">-->
+                  <p>First Name</p>  {{ form.first_name }}
+                </div>
+                <div class="form-item" id="lastname-field">
+<!--                  <input type="text" name="lastname" placeholder="Lastname">-->
+                  <p>Last Name</p> {{ form.last_name }}
+                </div>
+              </div>
+              <div class="form-item" id="username-field">
+<!--                <input type="text" name="username" placeholder="Username">-->
+                <p>Username</p> {{ form.username }}
+              </div>
+              <div class="form-item" id="email-field">
+<!--                <input type="email" name="email" placeholder="Email">-->
+                <p>Email</p> {{ form.email }}
+              </div>
+              <div class="form-item" id="password-field">
+<!--                <input type="password" name="password" placeholder="Password">-->
+                <p>Password</p> {{ form.password }}
+              </div>
+              <div class="form-item" id="password-confirm-field">
+<!--                <input type="password" name="password" placeholder="Confirm Password">-->
+                <p>Confirm Password</p> {{ form.confirm_password }}
+              </div>
+              <div class="form-item" >
+                <input id="submit-button" type="submit" name="submit-button" value="SignUp" >
+              </div>
+          </div>
+        </form>
+      <p>Already a member: <a href="{% url 'account:login' %}" class="sign-up-link">LogIn</a></p>
+  </div>
+  </body>
+</html>

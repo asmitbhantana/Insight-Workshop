@@ -1,0 +1,42 @@
+
+{% extends 'MainApp/base.html' %}
+{% block block_body %}
+    {% include 'MainApp/my_info_block.html' %}
+    <div class="content-container">
+    <nav>
+        <ul>
+            {% for category in category_list %}
+                <li>{{ category.name }}</li>
+            {% endfor %}
+        </ul>
+    </nav>
+        <form class="search-form">
+            {% csrf_token %}
+          <input type="text" name="search-text" placeholder="Search">
+          <input class="search-btn button" type="submit" name="submit-button" title="Go" value="Go">
+        </form>
+      </div>
+      <div class="articles-grid-view">
+        {% for ob in articleitem_list %}
+            <div class="article-container">
+                <div class="article-img-container">
+                    <img class="article-img" src="/media/{{ ob.banner }}"
+                         alt="{{ ob.title }}">
+                </div>
+                <div class="article-content">
+                    <a class="article-land-title" href="{% url 'blog:detail' ob.id %}" >
+                        {% if ob.title|length > 34%}
+                            {{ ob.title|slice:":30"|add:"..." }}
+                        {% else %}
+                            {{ ob.title }}
+                        {% endif %}
+
+                    </a>
+                    <p class="article-pub-date">Pub Date: <u>{{ ob.created_date }}</u></p>
+                    <p class="article-author">author: <u>{{ ob.author }}</u></p>
+                </div>
+            </div>
+        {% endfor %}
+
+      </div>
+{% endblock %}

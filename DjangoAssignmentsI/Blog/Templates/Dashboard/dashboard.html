@@ -1,0 +1,29 @@
+{% extends "Dashboard/base.html" %}
+{% block block_body %}
+<div class="content-container">
+    <nav>
+        <ul>
+            <li>Articles</li>
+            <li>Profile</li>
+        </ul>
+    </nav>
+    <div class="article-item-grid">
+        {% for article in articleitem_list %}
+            <div class="article-item-container">
+                <h4>{{ article.title }}</h4>
+                <div class="article-actions-button">
+                    <div class="delete-btn button">
+                        <a href="{% url 'dashboard:delete' article.id %}">Delete</a>
+                    </div>
+                    <div class="edit-btn button">
+                        <a href="{% url 'dashboard:edit' article.id %}">Edit</a>
+                    </div>
+                    <div class="view-btn button">
+                        <a href="{% url 'blog:detail' article.id %}">View</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
