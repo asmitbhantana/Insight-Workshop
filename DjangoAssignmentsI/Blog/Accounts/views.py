@@ -11,25 +11,28 @@ User = get_user_model()
 
 # Create your views here.
 def login_view(request):
+    form = LoginForm()
+
     if request.user.is_authenticated:
         return redirect('account:profile')
 
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            user = authenticate(username=form.cleaned_data['username'],
+            user = authenticate(email=form.cleaned_data['email'],
                                 password=form.cleaned_data['password'])
             if user:
                 print("User exists", user)
                 login(request, user)
                 return redirect('blog:index')
             else:
-                form.add_error('username', "Error On Credentials")
+                form.add_error('email', "Error On Credentials")
                 print("Auth credentials doesn't matches")
             print("Valid Form")
         print(request.POST)
     elif request.method == 'GET':
-        form = LoginForm()
+        pass
+        # form = LoginForm()
     return render(request, 'Accounts/login.html', {'form': form})
 
 
@@ -72,8 +75,9 @@ def register_view(request):
             return redirect('account:login')
         else:
             print("invalid data")
-            cleaned_data = register_form.cleaned_data
-            print(request.POST)
+            # cleaned_data = register_form.cleaned_data
+            # print(request.POST)
+
     elif request.method == 'GET':
         register_form = RegisterForm()
 

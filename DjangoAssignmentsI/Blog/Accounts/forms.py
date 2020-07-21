@@ -6,7 +6,7 @@ User = get_user_model()
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length=150)
+    email = forms.CharField(max_length=150)
     password = forms.CharField(max_length=128, widget=forms.PasswordInput())
 
 
