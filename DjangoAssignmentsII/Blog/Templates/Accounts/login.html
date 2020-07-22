@@ -15,14 +15,15 @@
         <form class="login-form" method="post">
           {% csrf_token %}
           <div class="input-container">
-            <div class="form-item" id="email-field">
+              {{ form }}
+{#            <div class="form-item" id="email-field">#}
 <!--              <input type="email" name="email" placeholder="Email">-->
-              <p>Email</p>{{ form.email }}
-            </div>
-            <div class="form-item" id="password-field">
+{#              <p>Email</p>{{ form.username }}#}
+{#            </div>#}
+{#            <div class="form-item" id="password-field">#}
 <!--              <input type="password" name="password" placeholder="Password">-->
-                <p>Password</p>{{ form.password }}
-            </div>
+{#                <p>Password</p>{{ form.password }}#}
+{#            </div>#}
             <div class="form-item" >
               <input id="submit-button" type="submit" name="submit-button" value="Login">
             </div>
