@@ -1,0 +1,61 @@
+{% extends 'MainApp/base.html' %}
+    {% block block_body %}
+    <section class="article-detail-post">
+    <div class="article-title">
+        <h1>
+            {{ articleitem.title }}
+        </h1>
+    </div>
+    <div class="article-image">
+        <img src="/media/{{ articleitem.banner }}" alt="" height="20px">
+    </div>
+    <div class="article-meta">
+        <div class="article-update-date article-meta-container">
+            <img src="https://image.flaticon.com/icons/svg/1250/1250615.svg" alt="" height="20px">
+            <p> {{ articleitem.updated_date|date }}</p>
+        </div>
+        <div class="article-created-date article-meta-container">
+            <img src="https://image.flaticon.com/icons/svg/3221/3221846.svg" alt="" height="20px">
+            <p>{{ articleitem.created_date|date }}</p>
+        </div>
+        <div class="article-author article-meta-container">
+            <img src="https://image.flaticon.com/icons/svg/3062/3062255.svg" height="20px">
+            <p>{{ articleitem.author }}</p>
+        </div>
+    </div>
+
+    <div class="article-detail">
+        {{ articleitem.description|safe }}
+    </div>
+    <div class="article-share-btns">
+        <ul>
+            <li>
+                <img src="https://image.flaticon.com/icons/svg/1384/1384053.svg" height="40px">
+            </li>
+            <li>
+                <img src="https://image.flaticon.com/icons/svg/1409/1409946.svg" height="40px">
+            </li>
+            <li>
+                <img src="https://image.flaticon.com/icons/svg/1409/1409937.svg" height="40px">
+            </li>
+            <li>
+                <p>2099 <br>Share</p>
+            </li>
+        </ul>
+    </div>
+    <div class="article-tag">
+        <img src="https://image.flaticon.com/icons/svg/876/876770.svg" alt="" height="20px">
+        <p>{{ articleitem.tags }}</p>
+    </div>
+    <div class="author-container">
+        <div class="article-about-author">
+            <h6 id="about-title">About Author</h6>
+            <div class="author-detail-container">
+                <img id="author-image" src="/media/{{ articleitem.author.profile_img }}">
+                <p id="author-desc">{{ author_text }}</p>
+            </div>
+        </div>
+    </div>
+    </section>
+{% endblock %}
+

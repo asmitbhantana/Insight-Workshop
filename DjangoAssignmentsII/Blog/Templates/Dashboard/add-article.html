@@ -1,0 +1,14 @@
+{% extends "Dashboard/base.html" %}
+{% block block_body %}
+    <div class="add-container">
+        <h1>Article Details:</h1>
+        <div class="from-container">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form.as_p }}
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
