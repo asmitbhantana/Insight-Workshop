@@ -65,7 +65,7 @@ def register_view(request):
             #     filename = fs.save(profile_image.name, profile_image)
             # print("File name is", filename)
             new_user = User(first_name=cleaned_data['first_name'], last_name=cleaned_data['last_name'],
-                            email=cleaned_data['email'], username=cleaned_data['username'])
+                            email=cleaned_data['email'], username=cleaned_data['username'], is_active=False)
 
             print("User is", new_user)
             new_user.save()
@@ -85,3 +85,7 @@ def register_view(request):
                   {
                       'form': register_form,
                   })
+
+
+def invalid(request):
+    return render(request, 'Accounts/invalid_token.html')

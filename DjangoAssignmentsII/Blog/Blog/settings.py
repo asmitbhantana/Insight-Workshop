@@ -10,19 +10,18 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
-import os
-
+from .extra_setting import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#hb+!(7*sf&d^o+tx!@m95%z8%prqysb!zq2s&51=gn-3-xjng'
+# SECRET_KEY = '#has&51=gn-3-xjng'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -76,15 +75,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Blog.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# # Database
+# # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -130,3 +129,7 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 
 # making custom users
 AUTH_USER_MODEL = 'User.User'
+
+
+#for testing: console email backend
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
