@@ -1,0 +1,136 @@
+body
+{
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+    color:  #4700b3;
+}
+/* navigation menu */
+nav
+{
+    display: flex;
+
+    width: auto;
+}
+
+.nav-header
+{
+    font-size: 25px;
+
+    padding: 20px 10px;
+
+    cursor: pointer;
+
+    flex-grow: 1;
+}
+.nav-menu-container ul
+{
+    padding-left: 3px;
+
+    list-style-type: none;
+}
+.nav-menu-container ul li
+{
+    float: left;
+
+    padding: 10px;
+
+    cursor: pointer;
+}
+
+.nav-menu-container ul li:hover
+{
+    color: white;
+    background: #a64dff;
+}
+
+/* content */
+/* content */
+.content-container
+{
+    display: flex;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+    background-color:  #eee6ff;
+    flex-direction: column;
+}
+/* content nav */
+.content-container nav
+{
+    flex-grow: 1;
+}
+.content-container nav ul
+{
+    list-style-type: none;
+
+    cursor: pointer;
+}
+
+.content-container nav li
+{
+    float: left;
+
+    margin-left: 5px;
+    padding: 10px;
+
+    border: .5px black solid;
+    border-radius: 30px;
+    background-color: #bf80ff;
+}
+
+.content-container nav li:first-child
+{
+    color: white;
+    background-color: #4700b3;
+}
+
+.content-container nav li:hover
+{
+    color: black;
+    background-color: white;
+}
+
+.article-item-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    
+}
+.article-item-container{
+    padding: 3px;
+    margin: 5px;
+    display: flex;
+    color: purple;
+    background-color: thistle;
+    border-radius: 3px;
+}
+.button a{
+    border: none;
+    color: white;
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 2px;
+    width: 90px;
+}
+.button a:hover{
+    background-color: white;
+    color: black;
+    border: 1px black solid;
+}
+.delete-btn a{
+    background-color: red;
+}
+.edit-btn a{
+    background-color: orange;
+}
+.view-btn a{
+    background-color: green;
+}
