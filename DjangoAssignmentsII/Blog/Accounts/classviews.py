@@ -70,7 +70,6 @@ class UserSignupView(FormView):
             'uid': urlsafe_base64_encode(force_bytes(new_user.pk)),
             'token': PasswordResetTokenGenerator.make_token(self=account_activation_token, user=new_user),
         })
-        new_user.email_user(subject, message)
         send_mail(subject, message, EMAIL_HOST_USER, [new_user.email], fail_silently=False)
         messages.success(self.request, 'Please Confirm your email to complete registration.')
 
