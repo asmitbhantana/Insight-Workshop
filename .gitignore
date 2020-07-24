@@ -2,7 +2,7 @@
 Insight-Workshop/PythonProgrammingAssignmentsIII/B Console App/consoleAppData/
 
 #setting_file
-/DjangoAssignmentsII/Blog/Blog/extra_setting.py
+DjangoAssignmentsII/Blog/Blog/extra_setting.py
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/pycharm,django,python
